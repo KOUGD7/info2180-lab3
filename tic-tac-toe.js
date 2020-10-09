@@ -9,7 +9,7 @@ for(var i = 0; i < squares.length; i++){
 
 //Exercise 1 - Layout the board 
 function addSquares() {
-    let boxes = document.querySelectorAll('#board div')
+    let boxes = document.querySelectorAll('#board div');
     var count = 0;
     boxes.forEach(element => {
         element.className = "square";
@@ -17,7 +17,9 @@ function addSquares() {
         addHover(element)
         count = count + 1;
     });
-    //console.log(boxes);
+
+    let r = document.querySelector('.btn')
+    reset(r, boxes);
 }
 
 //Exercise 2 - Add an X or O to a square when clicked
@@ -118,4 +120,25 @@ function arrSum (array, start, end, hops){
       }
 
     return sum
+}
+
+//Exercise 5 - Restart the game
+function reset(button, boxlst){
+    //when button click
+    console.log(button, boxlst);
+    button.addEventListener("click", function() {
+        count = 0
+        boxlst.forEach(e => {
+            e.textContent = null;
+            e.classList.remove('O');
+            e.classList.remove('X');
+            count = count + 1;
+            squares[count] = -10
+        });
+    
+    let stat = document.getElementById('status');
+    stat.textContent = "Move your mouse over a square and click to play an X or an O.";
+    stat.classList.remove('you-won');
+
+    });
 }
