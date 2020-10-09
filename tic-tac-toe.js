@@ -29,22 +29,6 @@ function addXO(ele, count){
     ele.addEventListener("click", function() { 
         let xo = ele.textContent
 
-        /*pre - anti cheat
-        if (xo == "O"){
-            ele.textContent = "X";
-            ele.classList.remove('O');
-            ele.classList.add('X');
-            squares[count] = 1
-            win()
-        }
-        else{
-            ele.textContent = "O";
-            ele.classList.remove('X');
-            ele.classList.add('O');
-            squares[count] = 0
-            win()
-        }*/
-
         //Exercise 6 - Disallow Cheating 
         if (xo == "" && state == "O"){
             ele.textContent = "X";
