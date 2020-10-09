@@ -86,13 +86,11 @@ function win(){
     let dia1 = arrSum(squares, 0, squares.length, 4);
     wincheck.push(dia1)
 
-    let dia2 = arrSum(squares, 0, squares.length-1, 2);
+    let dia2 = arrSum(squares, 2, squares.length-1, 2);
     wincheck.push(dia2)
 
     let owin = wincheck.filter(word => word == 0);
     let xwin = wincheck.filter(word => word == 3);
-
-    //console.log(wincheck, owin.length, xwin.length);
 
     let stat = document.getElementById('status');
 
@@ -140,7 +138,7 @@ function reset(button, boxlst){
             count = count + 1;
             
         });
-    
+
     let stat = document.getElementById('status');
     stat.textContent = "Move your mouse over a square and click to play an X or an O.";
     stat.classList.remove('you-won');
