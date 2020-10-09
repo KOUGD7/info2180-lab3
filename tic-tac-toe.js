@@ -4,7 +4,9 @@ var squares = new Array(9);
 for(var i = 0; i < squares.length; i++){
     squares[i] = -10; 
   }
-//console.log(squares);
+
+//Exercise 6 addition
+var state = "X";
 
 
 //Exercise 1 - Layout the board 
@@ -13,8 +15,8 @@ function addSquares() {
     var count = 0;
     boxes.forEach(element => {
         element.className = "square";
-        addXO(element, count)
-        addHover(element)
+        addXO(element, count);
+        addHover(element);
         count = count + 1;
     });
 
@@ -26,7 +28,9 @@ function addSquares() {
 function addXO(ele, count){
     ele.addEventListener("click", function() { 
         let xo = ele.textContent
-        if (xo == "O" ){
+
+        /*pre - anti cheat
+        if (xo == "O"){
             ele.textContent = "X";
             ele.classList.remove('O');
             ele.classList.add('X');
@@ -39,10 +43,26 @@ function addXO(ele, count){
             ele.classList.add('O');
             squares[count] = 0
             win()
+        }*/
+
+        //Exercise 6 - Disallow Cheating 
+        if (xo == "" && state == "O"){
+            ele.textContent = "X";
+            ele.classList.add('X');
+            squares[count] = 1
+            state = "X";
+            win()
         }
-        //console.log(ele.textContent)
-        //console.log("Button clicked.");
-        }); 
+
+        else if (xo == "" && state == "X"){
+            ele.textContent = "O";
+            ele.classList.add('O');
+            squares[count] = 0
+            state = "O";
+            win()
+        }
+        //console.log(squares)
+    }); 
 }
 
 //Exercise 3 - Change the style when you move your mouse over a square
@@ -125,15 +145,16 @@ function arrSum (array, start, end, hops){
 //Exercise 5 - Restart the game
 function reset(button, boxlst){
     //when button click
-    console.log(button, boxlst);
+    //console.log(button, boxlst);
     button.addEventListener("click", function() {
         count = 0
         boxlst.forEach(e => {
             e.textContent = null;
             e.classList.remove('O');
             e.classList.remove('X');
-            count = count + 1;
             squares[count] = -10
+            count = count + 1;
+            
         });
     
     let stat = document.getElementById('status');
