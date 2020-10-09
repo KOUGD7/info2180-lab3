@@ -7,6 +7,7 @@ function addSquares() {
     boxes.forEach(element => {
         element.className = "square";
         addXO(element)
+        addHover(element)
     });
     //console.log(boxes);
 }
@@ -28,5 +29,17 @@ function addXO(ele){
         //console.log(ele.textContent)
         //console.log("Button clicked.");
         }); 
+}
+
+//Exercise 3 - Change the style when you move your mouse over a square
+function addHover(ele){
+    //when mouse over square
+    ele.addEventListener("mouseover", function() {
+        ele.classList.add('hover');
+        });
+    //when mouse leaves square
+    ele.addEventListener("mouseout", function() {
+        ele.classList.remove('hover');
+        });
     
 }
